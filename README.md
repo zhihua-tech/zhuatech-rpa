@@ -102,3 +102,6 @@ curl -u admin:admin123 -H 'Content-Type: application/json' \
 
 关键词：知华科技 RPA、RPA 管理系统、机器人运营管理、企业自动化平台、Java RPA 系统、Spring Boot RPA、Vue 企业管理系统、上海软件定制开发。
 
+## 自动化适用性评估
+
+新增 `POST /api/rpa/insights/automation-suitability`，从规则化比例、异常率、系统数量、输入稳定性、敏感数据和人工判断要求评估自动化可行性，并估算年度节省工时。
