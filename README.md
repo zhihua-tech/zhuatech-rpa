@@ -105,3 +105,7 @@ curl -u admin:admin123 -H 'Content-Type: application/json' \
 ## 自动化适用性评估
 
 新增 `POST /api/rpa/insights/automation-suitability`，从规则化比例、异常率、系统数量、输入稳定性、敏感数据和人工判断要求评估自动化可行性，并估算年度节省工时。
+
+## 企业级机器人生产发布
+
+新增 `POST /api/enterprise/rpa/bot-production-release`，覆盖凭据、职责、测试、回滚、权限、责任、幂等、监控和异常率，返回 `DEPLOY / PILOT / BLOCKED`。详见 [机器人发布说明](docs/ENTERPRISE_BOT_RELEASE.md)。
