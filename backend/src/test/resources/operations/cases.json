@@ -1,0 +1,55 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "baselineMinutes": "#5000",
+      "exceptionTransactions": "#100",
+      "retainedHumanMinutes": "#2200",
+      "netReleasedHours": "#46.6667"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "maintenanceHours": "100"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "transactions": "1",
+      "exceptionPct": "0.01",
+      "maintenanceHours": "0"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "exceptionTransactions": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "exceptionPct": "0",
+      "maintenanceHours": "0"
+    },
+    "expected": {
+      "retainedHumanMinutes": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "transactions": "0",
+      "maintenanceHours": "0"
+    },
+    "expected": {
+      "decision": "REVIEW",
+      "netReleasedHours": "#0"
+    },
+    "error": false
+  }
+]

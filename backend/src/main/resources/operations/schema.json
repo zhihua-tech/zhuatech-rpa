@@ -1,0 +1,88 @@
+{
+  "slug": "rpa",
+  "title": "自动化失败返工与净人工释放测算",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "transactions",
+      "label": "月处理笔数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "manualMinutes",
+      "label": "原每笔人工分钟",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "exceptionPct",
+      "label": "预计异常率%",
+      "type": "NUMBER",
+      "scale": 4,
+      "min": "0",
+      "max": "100"
+    },
+    {
+      "key": "reworkMinutes",
+      "label": "每异常返工分钟",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "maintenanceHours",
+      "label": "月固定运维小时",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "baselineMinutes",
+      "label": "人工基线分钟"
+    },
+    {
+      "key": "exceptionTransactions",
+      "label": "向上估计异常笔数"
+    },
+    {
+      "key": "retainedHumanMinutes",
+      "label": "返工及运维分钟"
+    },
+    {
+      "key": "netReleasedHours",
+      "label": "净释放人工小时"
+    }
+  ],
+  "description": "将每月人工基线、自动处理失败率、每次异常返工和固定运维工时拆开，计算净释放工时，防止只报自动化毛收益。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "transactions": "1000",
+        "manualMinutes": "5",
+        "exceptionPct": "10",
+        "reworkMinutes": "10",
+        "maintenanceHours": "20"
+      }
+    ]
+  }
+}
