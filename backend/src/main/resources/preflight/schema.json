@@ -1,0 +1,91 @@
+{
+  "slug": "rpa",
+  "title": "机器人任务并发与重试额度预检",
+  "fields": [
+    {
+      "key": "job_no",
+      "label": "任务编号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "robot",
+      "label": "机器人",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "concurrency",
+      "label": "并发数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0,
+      "min": "1",
+      "max": "100"
+    },
+    {
+      "key": "capacity",
+      "label": "可用槽位",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0,
+      "min": "1",
+      "max": "100"
+    },
+    {
+      "key": "retries",
+      "label": "重试次数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0,
+      "max": "10"
+    },
+    {
+      "key": "retry_limit",
+      "label": "重试上限",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0,
+      "max": "10"
+    }
+  ],
+  "unique": [
+    [
+      "job_no"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "LE",
+      "args": [
+        "concurrency",
+        "capacity"
+      ],
+      "code": "ROBOT_CAPACITY",
+      "message": "并发数不能超过可用槽位",
+      "bad": {
+        "concurrency": "5"
+      }
+    },
+    {
+      "op": "LE",
+      "args": [
+        "retries",
+        "retry_limit"
+      ],
+      "code": "ROBOT_RETRIES",
+      "message": "重试次数不能超过策略上限",
+      "bad": {
+        "retries": "4"
+      }
+    }
+  ],
+  "sampleCsv": "job_no,robot,concurrency,capacity,retries,retry_limit\nBOT-001,RPA-01,2,4,2,3\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
